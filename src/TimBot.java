@@ -208,5 +208,12 @@ public class TimBot {
     return move;
   }
 
+  //if bot has enough energy to move
+  public void useEnergyToMove(int move) {
+    if( move != District.CURRENT ) {
+      energyLevel--;
+    }
+  }
+
 }
 

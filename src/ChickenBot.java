@@ -49,24 +49,27 @@ public class ChickenBot extends TimBot {
     // If we have energy, consider moving
     if( energyLevel > 0 ) {
       // Loop through all possibilities and compute the scores.
-      for( int i = 0; i < scores.length; i++ ) {
-        scores[i] = spressoSensed[i];
-        if( ( i != District.CURRENT ) && botsSensed[i] ) {
-          scores[i] += 2000;
-          adj = 1000;
-        }
-      }
+      adj = getScores(scores, adj);
       // Only the current district can have an adjacency score.
       scores[District.CURRENT] += adj;
 
       // Choose the move with the minimum score
       move = minimumScore(scores, move);
 
-      // Decrement energy level if we are moving.
-      if( move != District.CURRENT ) {
-        energyLevel--;
-      }
+      //if bot moves, then use energy
+      useEnergyToMove(move);
     }
     return move;
+  }
+  // Loop through all possibilities and compute the scores.
+  private int getScores(int[] scores, int adj) {
+    for(int i = 0; i < scores.length; i++ ) {
+      scores[i] = spressoSensed[i];
+      if( ( i != District.CURRENT ) && botsSensed[i] ) {
+        scores[i] += 2000;
+        adj = 1000;
+      }
+    }
+    return adj;
   }
 }

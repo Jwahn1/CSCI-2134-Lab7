@@ -23,19 +23,19 @@ Refactorings:
    Issue Idetified: repeated code calculated the minimum over all score in these classes
    Description of fix: made a public method in TimBot.java which they all  inherit
 
-3. File:
-   Location (method/approx. line #):
-   Issue Idetified:
-   Description of fix:
+3. File: ChickenBot, SpressoBot and TimBot
+   Location (method/approx. line #):useEnergyToMove()/ line 212 in TimBot.java
+   Issue Idetified: duplicate code
+   Description of fix: added method for decreasing bot energy when moving
 
-4. File:
-   Location (method/approx. line #):
-   Issue Idetified:
-   Description of fix:
+4. File: ChickenBot.java
+   Location (method/approx. line #): getScores()/ Line 65
+   Issue Idetified: Method getNextMove() was too long
+   Description of fix: seperated for loop into seperate method to create a less complex algorithm
 
-5. File:
-   Location (method/approx. line #):
-   Issue Idetified:
-   Description of fix:
+5. File: SpressoBot.java
+   Location (method/approx. line #): GetMoveScore()/line65
+   Issue Idetified: Method getNextMove was too long
+   Description of fix: seperated for loop into a seperate method to create a less complex algorithm
 
 

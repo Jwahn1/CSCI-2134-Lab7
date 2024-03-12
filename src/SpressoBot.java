@@ -49,25 +49,28 @@ public class SpressoBot extends TimBot {
     // If we have energy, consider moving
     if( energyLevel > 0 ) {
       // Compute scores for each possible move
-      for( int i = 0; i < scores.length; i++ ) {
-        scores[i] = spressoSensed[i] * 4;
-        if( ( i != District.CURRENT ) && botsSensed[i] ) {
-          scores[i] += 2;
-          adj = 1;
-        }
-      }
+      adj = getMoveScore(scores, adj);
       // Only the current district will have an adjacent score
       scores[District.CURRENT] += adj;
 
       // Find the move with the lowest score
       move = minimumScore(scores, move);
 
-      // If the move is to anothr district, decrement energy level.
-      if( move != District.CURRENT ) {
-        energyLevel--;
-      }
+      //if bot moves, then use energy
+      useEnergyToMove(move);
     }
     return move;
+  }
+
+  private int getMoveScore(int[] scores, int adj) {
+    for(int i = 0; i < scores.length; i++ ) {
+      scores[i] = spressoSensed[i] * 4;
+      if( ( i != District.CURRENT ) && botsSensed[i] ) {
+        scores[i] += 2;
+        adj = 1;
+      }
+    }
+    return adj;
   }
 
 
