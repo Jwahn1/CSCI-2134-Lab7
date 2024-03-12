@@ -49,23 +49,12 @@ public class AngryBot extends SpressoBot {
 
     // If we have enough energy, consider attacking another district
     if( energyLevel > 2 ) {
+
       // Compute scores for each of the districts, the lower scores are better
-      // score = spressoCount + PENALTY * (if district is empty)
-      for( int i = 0; i < scores.length; i++ ) {
-        scores[i] = spressoSensed[i];
-        if( !botsSensed[i] ) {
-          scores[i] += EMPTY_DISTRICT_PENALTY;
-        }
-      }
+      districtScores(scores);
 
       // Find the minimum over all scores
-      int min = scores[District.CURRENT] + 1;
-      for( int i = 0; i < scores.length; i++ ) {
-        if( min > scores[i] ) {
-          min = scores[i];
-          move = i;
-        }
-      }
+      move = minimumScore(scores, move);
 
       // If move is not to stay here, decrement energy level.
       if( move != District.CURRENT ) {
@@ -76,5 +65,15 @@ public class AngryBot extends SpressoBot {
       move = super.getNextMove();
     }
     return move;
+  }
+
+  private void districtScores(int[] scores) {
+    // score = spressoCount + PENALTY * (if district is empty)
+    for(int i = 0; i < scores.length; i++ ) {
+      scores[i] = spressoSensed[i];
+      if( !botsSensed[i] ) {
+        scores[i] += EMPTY_DISTRICT_PENALTY;
+      }
+    }
   }
 }

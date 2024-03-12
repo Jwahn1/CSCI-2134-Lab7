@@ -194,4 +194,19 @@ public class TimBot {
   public String toString() {
     return String.format( "(%c %2d %2d)", personality, myId, energyLevel );
   }
+
+
+  //function calculates the minimum over all scores and returns the move in the scores[i] with min value
+  public static int minimumScore(int[] scores, int move) {
+    int min = scores[District.CURRENT] + 1;
+    for(int i = 0; i < scores.length; i++ ) {
+      if( min > scores[i] ) {
+        min = scores[i];
+        move = i;
+      }
+    }
+    return move;
+  }
+
 }
+

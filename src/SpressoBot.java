@@ -60,13 +60,7 @@ public class SpressoBot extends TimBot {
       scores[District.CURRENT] += adj;
 
       // Find the move with the lowest score
-      int min = scores[District.CURRENT] + 1;
-      for( int i = 0; i < scores.length; i++ ) {
-        if( min > scores[i] ) {
-          min = scores[i];
-          move = i;
-        }
-      }
+      move = minimumScore(scores, move);
 
       // If the move is to anothr district, decrement energy level.
       if( move != District.CURRENT ) {
@@ -75,4 +69,6 @@ public class SpressoBot extends TimBot {
     }
     return move;
   }
+
+
 }

@@ -60,13 +60,7 @@ public class ChickenBot extends TimBot {
       scores[District.CURRENT] += adj;
 
       // Choose the move with the minimum score
-      int min = scores[District.CURRENT] + 1;
-      for( int i = 0; i < scores.length; i++ ) {
-        if( min > scores[i] ) {
-          min = scores[i];
-          move = i;
-        }
-      }
+      move = minimumScore(scores, move);
 
       // Decrement energy level if we are moving.
       if( move != District.CURRENT ) {

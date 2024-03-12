@@ -1,7 +1,7 @@
 List of Refactorings
 ====================
 
-Name/Banner# of Developer 1:
+Name/Banner# of Developer 1: javier wahn/B00935618
 Name/Banner# of Developer 2:
 
 Refactorings:
@@ -13,15 +13,15 @@ Refactorings:
    Issue Idetified: Magic number
    Description of fix:  Replaced with constant EMPTY_DISTRICT_PENALTY
 
-1. File:
-   Location (method/approx. line #):
-   Issue Idetified:
-   Description of fix:
+1. File: AngryBot.java
+   Location (method/approx. line #):districtScores(), line 70
+   Issue Idetified: Method is too long
+   Description of fix: refactored method into calling separate methods to have a simpler algorithm
 
-2. File:
-   Location (method/approx. line #):
-   Issue Idetified:
-   Description of fix:
+2. File: AngryBot.java,chickenBot.java,SpressoBot.java
+   Location (method/approx. line #):minimumScore() line 200 in TimBot.java
+   Issue Idetified: repeated code calculated the minimum over all score in these classes
+   Description of fix: made a public method in TimBot.java which they all  inherit
 
 3. File:
    Location (method/approx. line #):
